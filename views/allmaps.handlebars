@@ -1,0 +1,167 @@
+<div class="loader" id='loader'></div>
+<div id='page' >
+
+    <div class='headerSite'>
+        <h1>HoppeFortniteStats</h1>
+        <ul>
+            <li> <form action="/searchID" method="GET"><button>Search ID</button></form> </li>
+            <li> <form action="/statusPlayer" method="GET"><button>Tournament Status</button></form> </li>
+            <li> <form action="/" method="GET"><button>Store</button></form> </li>
+            <li> <form action="/allmaps" method="GET"><button>All Maps</button></form> </li>
+        </ul>
+    </div>
+
+    <div class='store'>
+        <h2>All maps: </h2>
+        
+        {{#each maps}}
+
+            <div class='mapSeason'>
+                <h3>Patch Version: {{patchVersion}}</h3>
+                <p>Release Date: {{releaseDate}}</p>
+                <img src='{{imageURL}}' width="200px" height="200px">
+            </div>
+
+        {{/each}}
+    </div>
+
+</div>
+
+<style>
+
+    @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    .headerSite {
+        text-align: center;
+        background-color: #111111;
+        padding: 20px;
+    }
+
+    .headerSite h1 {
+        font-family: 'Roboto', sans-serif;
+        font-weight: bold;
+        color: white;
+    }
+
+    .headerSite ul li {
+        text-decoration: none;
+        list-style-type: none;
+        display: inline-block;
+    }
+
+    .mapSeason {
+        background-color: #fafafa;
+        padding: 10px;
+        margin: 10px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .headerSite ul li form button {
+        border: none;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        padding: 5px;
+        margin-top: 15px;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .loader {
+            border: 16px solid #f3f3f3; /* Light grey */
+            border-top: 16px solid #111111; /* Blue */
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 0.3s linear infinite;
+            justify-content: center;
+            left: 32%;
+            top: 35%;
+            position: absolute;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+    }
+
+    @media screen and (min-width: 1025px) {
+        .loader {
+            border: 16px solid #f3f3f3; /* Light grey */
+            border-top: 16px solid #111111; /* Blue */
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 0.3s linear infinite;
+            justify-content: center;
+            left: 45%;
+            top: 45%;
+            position: absolute;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+    }
+
+    #page {
+        display: none;
+    }
+
+    .store {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .store h2 {
+        font-family: 'Roboto', sans-serif;
+        font-weight: lighter;
+        color: #444;
+    }
+
+    .item-store {
+        background-color: #fafafa;
+        margin: 10px;
+        padding: 10px;
+        display: inline-block;
+    }
+
+    .item-store h3 {
+        font-family: 'Roboto', sans-serif;
+        font-weight: lighter;
+        padding: 10px;
+    }
+
+    .item-store p {
+        background-color: #111111;
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        padding: 5px;
+    }
+    
+
+</style>
+
+<script>
+
+    function Loader() {
+        var loader = document.getElementById('loader')
+        var body = document.getElementById('page')
+
+        loader.setAttribute('style', 'display: none;')
+        body.setAttribute('style', 'display: block;')
+
+
+    }
+
+    setInterval(() => { Loader() }, 5000)
+
+</script>

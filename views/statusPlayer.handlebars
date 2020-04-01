@@ -1,0 +1,248 @@
+<div class="loader" id='loader'></div>
+<div id='page' >
+
+    <div class='headerSite'>
+        <h1>HoppeFortniteStats</h1>
+        <ul>
+            <li> <form action="/searchID" method="GET"><button>Search ID</button></form> </li>
+            <li> <form action="/statusPlayer" method="GET"><button>Tournament Status</button></form> </li>
+            <li> <form action="/" method="GET"><button>Store</button></form> </li>
+            <li> <form action="/allmaps" method="GET"><button>All Maps</button></form> </li>
+        </ul>
+    </div>
+
+    <div class='searchID'>
+        <h2>Search Status:</h2>
+        <form action="searchStatus" method="POST"> 
+            <input placeholder="Your ID/Username:" name='player_id' />
+            <br>
+            <button>Obter Status</button>
+            <p class='alertError'>{{alert}}</p>
+        </form>
+    </div>
+
+    <div class="mathches">
+        {{#each results}}
+            <div class='tournamentMatch'>
+                <h3>{{readable_name}}</h3>
+                <img src='{{imageURL}}' width="300px" height="200px" />
+                <p>Total Score: {{score}}</p>
+                <p>Kills: {{kills}}</p>
+                <p>Matches Played: {{matchesplayed}}</p>
+                <p>Top 1: x{{placetop1}}</p>
+                <p>Top 3: x{{placetop3}}</p>
+            </div>
+
+        {{/each}}
+    </div>
+
+</div>
+
+<style>
+
+    @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    .headerSite {
+        text-align: center;
+        background-color: #111111;
+        padding: 20px;
+    }
+
+    .headerSite h1 {
+        font-family: 'Roboto', sans-serif;
+        font-weight: bold;
+        color: white;
+    }
+
+    .headerSite ul li {
+        text-decoration: none;
+        list-style-type: none;
+        display: inline-block;
+    }
+
+
+    @media screen and (min-width: 1025px) {
+        .tournamentMatch {
+            text-align: center;
+            display: inline-block;
+            background-color: #fafafa;
+            margin: 10px;
+            padding: 10px;
+        }
+
+        .tournamentMatch h3 {
+            font-family: 'Roboto', sans-serif;
+            padding: 10px;
+        }
+
+        .tournamentMatch p {
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            background-color: #111111;
+            color: white;
+            margin: 10px;
+            padding: 10px;
+        }
+
+    }
+
+     @media screen and (max-width: 1025px) {
+        .tournamentMatch {
+            text-align: center;
+            display: inline-block;
+            background-color: #fafafa;
+            margin: 45px;
+            padding: 10px;
+        }
+
+        .tournamentMatch h3 {
+            font-family: 'Roboto', sans-serif;
+            padding: 10px;
+        }
+
+        .tournamentMatch p {
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            background-color: #111111;
+            color: white;
+            margin: 10px;
+            padding: 10px;
+        }
+     }
+
+    
+    .alertError {
+        font-family: Arial, Helvetica, sans-serif;
+        margin-top: 10px;
+    }
+
+    .headerSite ul li form button {
+        border: none;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        padding: 5px;
+        margin-top: 15px;
+    }
+
+    .result-id {
+        font-family: Arial, Helvetica, sans-serif;
+        margin-top: 30px;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .loader {
+            border: 16px solid #f3f3f3; /* Light grey */
+            border-top: 16px solid #111111; /* Blue */
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 0.3s linear infinite;
+            justify-content: center;
+            left: 32%;
+            top: 35%;
+            position: absolute;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+    }
+
+    @media screen and (min-width: 1025px) {
+        .loader {
+            border: 16px solid #f3f3f3; /* Light grey */
+            border-top: 16px solid #111111; /* Blue */
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 0.3s linear infinite;
+            justify-content: center;
+            left: 45%;
+            top: 45%;
+            position: absolute;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+    }
+
+    #page {
+        display: none;
+    }
+
+    .searchID {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .searchID h2 {
+        font-family: 'Roboto', sans-serif;
+        font-weight: lighter;
+        color: #444;
+    }
+
+    .searchID input {
+        border: none;
+        border-bottom: 1px solid #111111;
+        padding: 10px;
+    }
+
+    .searchID button {
+        border: none;
+        background-color: #111111;
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        padding: 5px;
+        margin-top: 10px;
+    }
+
+    .item-store {
+        background-color: #fafafa;
+        margin: 10px;
+        padding: 10px;
+        display: inline-block;
+    }
+
+    .item-store h3 {
+        font-family: 'Roboto', sans-serif;
+        font-weight: lighter;
+        padding: 10px;
+    }
+
+    .item-store p {
+        background-color: #111111;
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        padding: 5px;
+    }
+    
+
+</style>
+
+<script>
+
+    function Loader() {
+        var loader = document.getElementById('loader')
+        var body = document.getElementById('page')
+
+        loader.setAttribute('style', 'display: none;')
+        body.setAttribute('style', 'display: block;')
+
+
+    }
+
+    setInterval(() => { Loader() }, 1000)
+
+</script>
